@@ -1,18 +1,18 @@
 Vue
-# 1、说出至少4种vue当中的指令和它的用法？
+# 1. 说出至少4种vue当中的指令和它的用法？
  答：v-if：判断是否隐藏
 v-for：数据循环出来
 v-bind:class：绑定一个属性
 v-model：实现双向绑定
-# 2、Vue的双向数据绑定原理是什么？
+# 2. Vue的双向数据绑定原理是什么？
  答：vue.js 是采用数据劫持结合发布者-订阅者模式的方式，通过Object.defineProperty()来劫持各个属性的setter，getter，在数据变动时发布消息给订阅者，触发相应的监听回调。
  具体步骤：
  第一步：需要observe的数据对象进行递归遍历，包括子属性对象的属性，都加上 setter和getter
  这样的话，给这个对象的某个值赋值，就会触发setter，那么就能监听到了数据变化
  第二步：compile解析模板指令，将模板中的变量替换成数据，然后初始化渲染页面视图，并将每个指令对应的节点绑定更新函数，添加监听数据的订阅者，一旦数据有变动，收到通知，更新视图第三步：Watcher订阅者是Observer和Compile之间通信的桥梁，
  主要做的事情是:
- 1、在自身实例化时往属性订阅器(dep)里面添加自己
- 2、自身必须有一个update()方法
+ 1. 在自身实例化时往属性订阅器(dep)里面添加自己
+ 2. 自身必须有一个update()方法
  3、待属性变动dep.notice()通知时，能调用自身的update()方法，并
  触发Compile中绑定的回调，则功成身退。
  第四步：MVVM作为数据绑定的入口，整合Observer、Compile和
@@ -45,10 +45,10 @@ v-model：实现双向绑定
 # 10、vue生命周期的作用是什么
  答：它的生命周期中有多个事件钩子，让我们在控制整个Vue实例的过程
  时更容易形成好的逻辑。
-# 11、第一次页面加载会触发哪几个钩子
+# 11. 第一次页面加载会触发哪几个钩子
  答：第一次页面加载时会触发 beforeCreate, created, beforeMount, mounted 
  这几个钩子
-# 12、DOM 渲染在 哪个周期中就已经完成
+# 12. DOM 渲染在 哪个周期中就已经完成
  答：DOM 渲染在 mounted 中就已经完成了。
 # 13、简单描述每个周期具体适合哪些场景
  答：生命周期钩子的一些使用方法：
@@ -124,7 +124,7 @@ Vue.directive('dir2', {
  <div v-dir1></div>
  <div v-dir2></div>
 </div>
-# 21、vue如何自定义一个过滤器？
+# 21. vue如何自定义一个过滤器？
 答：
 html代码：
 ```html
@@ -161,7 +161,7 @@ Vue.filter('capitalize', function (value) {
 
 过滤器接收表达式的值 (msg) 作为第一个参数。capitalize 过滤器将会收到
 msg的值作为第一个参数。
-# 22、对keep-alive 的了解？
+# 22. 对keep-alive 的了解？
 答：
 keep-alive是 Vue 内置的一个组件，可以使被包含的组件保留状态，或避免重新渲染。在vue 2.1.0 版本之后，keep-alive新加入了两个属性: include(包含的组件缓存) 与 exclude(排除的组件不缓存，优先级大于include) 。使用方法
 ```javascript
@@ -230,7 +230,7 @@ include 和 exclude 的属性允许组件有条件地缓存。
 初始化 computed, 遍历 computed 里的每个属性，每个 computed 属性都是一个 watch 实例。每个属性提供的函数作为属性的 getter，使用Object.defineProperty 转化。Object.defineProperty getter 依赖收集。用于依赖发生变化时，触发属性重新
 计算。若出现当前 computed 计算属性嵌套其他 computed 计算属性时，先进行其
 他的依赖收集。
-# 31、diff 算法实现
+# 31. diff 算法实现
 答：diff 的实现主要通过两个方法，patchVnode 与 updateChildren 。patchVnode 有两个参数，分别是老节点 oldVnode, 新节点 vnode 。主要分五种情况：
 if (oldVnode === vnode)，他们的引用一致，可以认为没有变化。
 if(oldVnode.text !== null && vnode.text !== null && oldVnode.text !==vnode.text)，文本节点的比较，需要修改，则会调用Node.textContent =vnode.text。
@@ -238,7 +238,7 @@ if( oldCh && ch && oldCh !== ch ), 两个节点都有子节点，而且它们不
 if (ch)，只有新的节点有子节点，调用createEle(vnode)，vnode.el已经引用了老的dom节点，createEle函数会在老dom节点上添加子节点。
 if (oldCh)，新节点没有子节点，老节点有子节点，直接删除老节点。updateChildren 是关键，这个过程可以概括如下：
 oldCh 和 newCh 各有两个头尾的变量 StartIdx 和 EndIdx ，它们的2个变量相互比较，一共有4种比较方式。如果 4 种比较都没匹配，如果设置了key，就会用key进行比较，在比较的过程中，变量会往中间靠，一旦StartIdx > EndIdx 表明 oldCh 和 newCh 至少有一个已经遍历完了，就会结束比较
-# 32、Vue complier 实现
+# 32. Vue complier 实现
 答：模板解析这种事，本质是将数据转化为一段 html ，最开始出现在后端，经过各种处理吐给前端。随着各种 mv* 的兴起，模板解析交由前端处理。 总的来说，Vue complier 是将 template 转化成一个 render 字符串。 可
 以简单理解成以下步骤：
 parse 过程，将 template 利用正则转化成 AST 抽象语法树。
@@ -250,10 +250,10 @@ generate 过程，生成 render 字符串。
 答：Vue路由在Android机上有问题，babel问题，安装babel polypill插件解
 决。
 Vue-router
-1、怎么定义vue-router的动态路由？怎么获取传过来的动态参数？
+1. 怎么定义vue-router的动态路由？怎么获取传过来的动态参数？
 答：在router目录下的index.js文件中，对path属性加上/:id。 使用router对象
 的params.id
-2、vue-router是什么？它有哪些组件？
+2. vue-router是什么？它有哪些组件？
 答：vue用来写路由一个插件。router-link、router-view
 3. Vue的路由实现：hash模式 和 history模式
 答：hash模式：在浏览器中符号“#”，#以及#后面的字符称之为hash，
@@ -261,12 +261,12 @@ Vue-router
 history模式：history采用HTML5的新特性；且提供了两个新方法：pushState（），replaceState（）可以对浏览器历史记录栈进行修改，以及popState事件的监听到状态变更。
 4. $route和$router的区别
 答：$route是“路由信息对象”，包括path，params，hash，query，fullPath，matched，name等路由信息参数。而$router是“路由实例”对象包括了路由的跳转方法，钩子函数等。
-Vuex
-1、vuex是什么？怎么使用？哪种功能场景使用它？
+## Vuex
+1. vuex是什么？怎么使用？哪种功能场景使用它？
 答：vue框架中状态管理。在main.js引入store，注入。新建了一个目
 录store，….. export 。场景有：单页应用中，组件之间的状态。音乐播放、
 登录状态、加入购物车
-2、vuex有哪几种属性
+2. vuex有哪几种属性
 答：有五种，分别是 State、 Getter、Mutation 、Action、 Module
 vuex的State特性
 A、Vuex就是一个仓库，仓库里面放了很多对象。其中state就是数据源存
@@ -289,14 +289,14 @@ Action 类似于 mutation，不同在于：Action 提交的是 mutation，而不
 增加耦合，大量的上传派发，会让耦合性大大增加，本来Vue用
 Component就是为了减少耦合，现在这么用，和组件化的初衷相背。
 axios
-1、 axios的特点有哪些？
+1.  axios的特点有哪些？
 答：一、Axios 是一个基于 promise 的 HTTP 库，支持promise所有的
  API
 二、它可以拦截请求和响应
 三、它可以转换请求数据和响应数据，并对响应回来的内容自动转换成
 JSON类型的数据
 四、安全性更高，客户端支持防御 XSRF
-2、axios有哪些常用方法？
+2. axios有哪些常用方法？
 答：一、axios.get(url[, config]) //get请求用于列表和信息查询
  二、axios.delete(url[, config]) //删除
  三、axios.post(url[, data[, config]]) //post请求用于信息的添加
