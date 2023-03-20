@@ -56,13 +56,13 @@ document.querySelectorAll()        //根据css选择器获取元素集合（类�
 <div><p>node</p></div>
 
 ```
-每个节点都有`nodeType`属性，表示该节点的类型。节点类型由定义在`Node`类型上的12个数值常量表示，下面是常用的6个：
-1. `NODE.ELEMENT_NODE(1) 元素节点 对应的数字为1
-2. NODE.ATTRIBUTE_NODE(2) 属性节点 对应的数字为2
-3. NODE.TEXT_NODE(3) 文本节点 对应的数字为3
-4. NODE.COMENT_NODE(8) 注释节点 对应的数字为8
-5. NDOE.DOCUMENT_NODE(9) document节点 对应的数字为9
-6. NODE.DOCUMENT_FRAGMENT_NODE(11) documentFragment节点 对应的数字为11
+每个节点都有`nodeType`属性，表示该节点的类型。节点类型由定义在`Node`类型上的12个数值常量表示，下面是常用的 6个：
+1. `NODE.ELEMENT_NODE(1)` 元素节点 对应的数字为1
+2. `NODE.ATTRIBUTE_NODE(2)` 属性节点 对应的数字为2
+3. `NODE.TEXT_NODE(3)` 文本节点 对应的数字为3
+4. `NODE.COMENT_NODE(8)` 注释节点 对应的数字为8
+5. `NDOE.DOCUMENT_NODE(9)` document节点 对应的数字为9
+6. `NODE.DOCUMENT_FRAGMENT_NODE(11)` documentFragment节点 对应的数字为11
 节点类型可以通过与这些常量来比较
 ```javascript
 //如果someNode的nodeType为元素节点，则打印出来。
@@ -74,6 +74,7 @@ if (someNode.nodeType == Node.ELEMNT_NODE){
 ##### nodeName与nodeValue
 `nodeName`与`nodeValue`保存着有关节点的信息。这两个属性的值完全取决于节点类型，在使用这两个属性之前，最好是先检测节点类型：
 ```javascript
+//对元素而言，nodeName始终等于元素的标签名，而nodeValue始终为null
 if(someNode.nodeType == 1){
     value = someNode.nodeName;
 }
@@ -83,7 +84,14 @@ if(someNode.nodeType == 1){
 节点存在一个元素节点的概念，这个元素节点也成为DOM元素。
 DOM元素也就是我们通过document对象下面方法选择出来的元素对象，对于DOM对象来说就是DOM元素。DOM元素 === 元素节点
 元素节点树：由DOM元素形成的树型结构。
-##### 节点的种类
+#### 节点的关系
+文档中所有节点都与其他节点有关系，每一个节点都有一个`childNodes`，其中包含`NodeList`的实例。`NodeList`是一个类数组对象，用于存储可以按位置存储的有序节点。`NodeList`对象独特的地方在于，它其实是一个对DOM结构的查询，因此`DOM`结构的变化会自动地在`NodeList`反映出来。`NodeList`是实时的活动对象，而不是第一次访问时所获的内容的快照。
+```javascript
+//访问NodeList中的元素，可以使用item()和[]方法，推荐使用中括号[]方法
+let firstChild = someNode.childNodes[0];
+let secondChild = someNode.childNodes.item(1);
+let count = someNode.childNodes.length;
+```
 1. parentNode   
 2. childNodes  
 3. firstChild
@@ -125,6 +133,7 @@ a.parentNode.parentNode;
   </ul>szs
 */
 ```
+#### 操纵节点     
 #### 遍历元素节点树
 只寻找元素节点
 1. parentElement                          IE9
