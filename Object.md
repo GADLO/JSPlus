@@ -88,7 +88,7 @@ console.log(str.constructor);  //String () {}
 /*
   当我们new一个函数的时候：
   1. 执行函数
-  2. 函数执行是内部创建对象
+  2. 函数执行时在内部创建对象
   3. 创建this属性指向空对象{}
   4. return this(隐式return)
 */
