@@ -1,0 +1,35 @@
+.list-hd {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    color: #fff;
+    font-weight: normal;
+    background-color: orange;
+    z-index: 1;
+}
+
+.container {
+    margin-top: 45px;
+}
+
+.auto-btn {
+    display: block;
+    position: fixed;
+    bottom: 105px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #356ddc;
+    color: #b6b3b3;
+    text-align: center;
+    line-height: 60px;
+    font-size: 18px;
+    font-weight: bold;
+    opacity: 1;
+}
