@@ -190,10 +190,10 @@ function deepClone(value) {
 //封装childNodes方法，实现Children的效果
 function elemChildren(node) {
   var temp = {
-      length: 0,
-      push: Array.prototype.push,
-      slice: Array.prototype.slice,
-    },
+    length: 0,
+    push: Array.prototype.push,
+    slice: Array.prototype.slice,
+  },
     children = node.childNodes;
 
   for (let i = 0; i < children.length; i++) {
@@ -276,6 +276,9 @@ Element.prototype.elemSibling = function (n) {
 
   return elem;
 };
+
+
+
 
 /***
  *    __/\\\\\\\\\\\\_________/\\\\\\\\\______/\\\\\\\\\\\\\\\___/\\\\\\\\\\\\\\\_
@@ -360,6 +363,10 @@ Date.prototype.countDown = function (endTime, timer) {
     "秒"
   );
 };
+
+
+
+
 
 /***
  *    __/\\\\\\\\\\\\\\\___/\\\________/\\\___/\\\\\\\\\\\\\\\___/\\\\\_____/\\\___/\\\\\\\\\\\\\\\_
