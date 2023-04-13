@@ -1,0 +1,27 @@
+@BASE_URL=http://localhost:8000/api/user
+@CONTENT_TYPE=Content-Type:application/json
+
+###获取用户列表API
+get {{BASE_URL}}/get_user_list
+
+###注册API
+post {{BASE_URL}}/register
+{{CONTENT_TYPE}}
+
+{
+    "username": "xiaoye2",
+    "password": "12345678"
+}
+
+###登陆API
+post {{BASE_URL}}/login
+{{CONTENT_TYPE}}
+
+{
+   "username": "xiaoye",
+   "password": "12345678"
+}
+
+###获取个人信息API
+post {{BASE_URL}}/profile
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MjRlZjM5ZjMyMzU0NjBhMGI5MmY4YyIsImlhdCI6MTY4MDE1NTcwMywiZXhwIjoxNjgwMTU1NzYzfQ.u3WrKnjhO3iLEBW_2BN5pGguCqdaJBxFy-AsnEnBs6w

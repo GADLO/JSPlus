@@ -21,6 +21,7 @@ export default function router(routes) {
                 })
 
                 this.innerHTML = await item.view(params)
+                item.script()
             }
         });
     }
