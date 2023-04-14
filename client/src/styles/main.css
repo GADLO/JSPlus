@@ -1,0 +1,16 @@
+.main {
+  display: flex;
+  max-width: 1336px;
+  min-height: 600px;
+  border-bottom: 1px solid #000;
+}
+.main-left {
+  min-width: 728px;
+  max-width: 728px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main-right {
+  border-left: 1px solid #f2f2f2;
+}/*# sourceMappingURL=main.css.map */

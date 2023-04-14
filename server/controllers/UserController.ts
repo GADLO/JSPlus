@@ -14,6 +14,7 @@ export interface IUserInfo {
   password: string;
 }
 
+//获取用户列表
 export async function getUserList(req: Request, res: Response) {
   console.log("<-Cotroller-getUserList");
 
