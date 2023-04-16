@@ -1,9 +1,9 @@
 $primary-color: #24a0ed;
-$btn-bgc:#f2f2f2;
-$link:#1a8917;
-$text:#292929;
-$timestamp:#757575;
-$main-border:#f2f2f2;
+$btn-bgc: #f2f2f2;
+$link: #1a8917;
+$text: #292929;
+$timestamp: #757575;
+$main-border: #f2f2f2;
 
 @import "header";
 @import "main";
@@ -12,13 +12,16 @@ $main-border:#f2f2f2;
 .text {
   color: $primary-color;
 }
+
 button {
   color: $primary-color;
   border: 2px solid $primary-color;
 }
 
 
-body{
-    margin: 0;
-}
+body {
+  margin: 0;
 
+  font-family: source-serif-pro, Georgia, Cambria, "Times New Roman", Times, serif;
+
+}

@@ -8,27 +8,54 @@
 
 .main {
   display: flex;
-  max-width: 1336px;
-  min-height: 1000px;
+  justify-content: space-evenly;
+  width: 100%;
+  min-height: 100vh;
   border-bottom: 1px solid #000;
+  row-gap: 20px;
 }
 .main-left {
-  min-width: 728px;
-  max-width: 728px;
+  padding: 24px;
+  flex: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+.main-left .article {
+  width: 100%;
+  height: 276px;
+  border-bottom: 1px solid #f2f2f2;
+}
+.main-left .article .at {
+  height: 10%;
+}
+.main-left .article .am {
+  height: 90%;
+  display: flex;
+}
+.main-left .article .am .amt {
+  flex: 3;
+}
+.main-left .article .am .ami {
+  flex: 1;
+  margin-left: 60px;
+}
 .main-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 328px;
   border-left: 1px solid #f2f2f2;
 }
 
-.fd {
+.ft {
   height: 57px;
   line-height: 57px;
   position: fixed;
-  top: 10px;
+  bottom: 0;
   text-align: center;
+  width: 100%;
 }
 
 .text {
@@ -42,4 +69,5 @@ button {
 
 body {
   margin: 0;
+  font-family: source-serif-pro, Georgia, Cambria, "Times New Roman", Times, serif;
 }/*# sourceMappingURL=common.css.map */
