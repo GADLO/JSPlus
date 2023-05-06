@@ -5,7 +5,8 @@ import {
     homeScript,
     detailScript
 } from '../controllers/Todo'
-import { MouseView, mouseScript } from '../controllers/Mouse'
+import { MouseView, mouseScript } from '../controllers/Mouse';
+import { LabView, labScript } from '../controllers/Lab'
 
 export default router([
     {
@@ -22,5 +23,10 @@ export default router([
         path: '/mouse',
         view: MouseView,
         script: mouseScript
+    },
+    {
+        path: '/lab',
+        view: LabView,
+        script: labScript
     },
 ])
