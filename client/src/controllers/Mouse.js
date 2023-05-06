@@ -75,6 +75,8 @@ export async function mouseScript() {
 
     //封装拖拽函数模块
     var oLink = document.getElementsByClassName('link')[0]
+    var oMenu = document.getElementsByClassName('menu')[0]
+
     var dragNClick = (function (elem, elemClick) {
         //记录mouse事件时间戳，初始位置，当前窗口宽度,元素宽高
         var beginTime = 0,
@@ -118,23 +120,22 @@ export async function mouseScript() {
 
                 //当元素超过横向边界时，重新赋值操作
                 if (elemLeft <= 0) {
-                    elemLeft = 0
+                    elemLeft = 0;
                 } else if (elemLeft >= wWidth - elemWidth) {
-                    elemLeft = wWidth - elemWidth
+                    elemLeft = wWidth - elemWidth;
                 }
 
                 //当元素超过纵向边界时，重新赋值操作
                 if (elemTop <= 0) {
                     elemTop = 0
                 } else if (elemTop >= wHeight - elemHeight) {
-                    elemTop = wHeight - elemHeight
-                    console.log(1);
+                    elemTop = wHeight - elemHeight;
                 }
 
 
                 //让元素跟随拖拽位置
                 elem.style.left = elemLeft + 'px';
-                elem.style.top = elemTop + 'px'
+                elem.style.top = elemTop + 'px';
 
 
             }
@@ -164,15 +165,21 @@ export async function mouseScript() {
     // })
 
     //封装拖拽函数进Elemnt原型
-    Element.prototype.dragNClick = (function (elemClick) {
-        //记录mouse事件时间戳，初始位置
+    Element.prototype.dragNClick = (function (menu, elemClick) {
+        //记录mouse事件时间戳，初始位置，当前窗口宽度,元素宽高
         var beginTime = 0,
             endTime = 0,
+            cBeginTime = 0,
+            cEndTime = 0,
+            cCounter = 0,
+            t,
             initPos = [],
             wWidth = getViewportSize().width,
             wHeight = getViewportSize().height,
             elemWidth = getStyles(this, 'width'),
-            elemHeight = getStyles(this, 'height');
+            elemHeight = getStyles(this, 'height'),
+            mWidth = getStyles(menu, 'width'),
+            mHeight = getStyles(menu, 'height');
 
         //改变this指向，指向当前调用元素
         drag.call(this)
@@ -181,25 +188,63 @@ export async function mouseScript() {
             var x, y, _self = this;
 
             addEvent(this, 'mousedown', function (e) {
-                var e = e || window.event;
 
-                //开始时间戳
-                beginTime = new Date().getTime();
+                var e = e || window.event,
+                    //获取鼠标点击类型
+                    btnCode = e.button;
+                //右键点击
+                if (btnCode === 2) {
+                    var mLeft = pagePos(e).X,
+                        mTop = pagePos(e).Y;
 
-                //初始位置赋值
-                initPos = [getStyles(_self, 'left'), getStyles(_self, 'top')]
+                    //当元素超过横向边界时，重新赋值操作
+                    if (mLeft <= 0) {
+                        mLeft = 0
+                    } else if (mLeft >= wWidth - mWidth) {
+                        mLeft = pagePos(e).X - mWidth
+                    }
 
-                //获取鼠标在相对于elem边界坐标值
-                x = pagePos(e).X - getStyles(_self, 'left');
-                y = pagePos(e).Y - getStyles(_self, 'top');
+                    //当元素超过纵向边界时，重新赋值操作
+                    if (mTop <= 0) {
+                        mTop = 0
+                    } else if (mTop >= wHeight - mHeight) {
+                        mTop = pagePos(e).Y - mHeight
+                    }
 
-                //elem跟随鼠标坐标值
-                addEvent(document, 'mousemove', mouseMove);
-                addEvent(document, 'mouseup', mouseUp);
+                    menu.style.left = mLeft - mWidth + 'px';
+                    menu.style.top = mTop - mHeight + 'px';
+                    menu.style.display = 'block'
 
+                    //左键点击
+                } else if (btnCode === 0) {
+
+                    menu.style.display = 'none'
+
+                    //开始时间戳
+                    beginTime = new Date().getTime();
+
+                    //初始位置赋值
+                    initPos = [getStyles(_self, 'left'), getStyles(_self, 'top')]
+
+                    //获取鼠标在相对于elem边界坐标值
+                    x = pagePos(e).X - getStyles(_self, 'left');
+                    y = pagePos(e).Y - getStyles(_self, 'top');
+
+                    //elem跟随鼠标坐标值
+                    addEvent(document, 'mousemove', mouseMove);
+                    addEvent(document, 'mouseup', mouseUp);
+
+                    cancelBubble(e);
+                    preventDefaultEvent(e);
+                }
+
+            });
+
+            addEvent(document, 'contextmenu', function (e) {
+                var e = e || window.event
                 cancelBubble(e);
                 preventDefaultEvent(e);
-            });
+            })
 
             //获取鼠标在相对于elem边界坐标值函数
             function mouseMove(e) {
@@ -219,7 +264,6 @@ export async function mouseScript() {
                     elemTop = 0
                 } else if (elemTop >= wHeight - elemHeight) {
                     elemTop = wHeight - elemHeight
-
                 }
 
                 //让元素跟随拖拽位置
@@ -233,11 +277,36 @@ export async function mouseScript() {
                 var e = e || window.event;
                 endTime = new Date().getTime();
 
-                //若mousedown和mouseup时间间隔小于200 则默认为奠基事件，反之为拖拽事件
+                console.log('mouseup');
+
+
+
+                //若mousedown和mouseup时间间隔小于200 则默认为点击事件，反之为拖拽事件
                 if (endTime - beginTime < 200) {
-                    elemClick();
+
                     _self.style.left = initPos[0];
                     _self.style.top = initPos[1];
+
+                    cCounter++;
+
+                    if (cCounter === 1) {
+                        cBeginTime = new Date().getTime();
+                    }
+
+                    if (cCounter === 2) {
+                        cEndTime = new Date().getTime()
+                    }
+
+                    if (cBeginTime && cEndTime && (cEndTime - cBeginTime < 300)) {
+                        elemClick();
+                    }
+
+                    t = setTimeout(function () {
+                        cBeginTime = 0;
+                        cEndTime = 0;
+                        cCounter = 0;
+                        clearTimeout(t)
+                    }, 500)
                 }
 
                 removeEvent(document, 'mouseup', mouseUp);
@@ -248,7 +317,8 @@ export async function mouseScript() {
     })
 
 
-    oLink.dragNClick(function () {
+    oLink.dragNClick(oMenu, function (e) {
+
         window.open('http://google.com')
     })
 }
