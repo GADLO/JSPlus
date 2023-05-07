@@ -5,6 +5,7 @@ export default function Mouse() {
     return (`
     <a href="javascript:;" class="link">link</a>
     <div class='box'><div>
+    <div class="menu"></div>
     `)
 }
 
