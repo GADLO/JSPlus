@@ -6,7 +6,9 @@ import {
     detailScript
 } from '../controllers/Todo'
 import { MouseView, mouseScript } from '../controllers/Mouse';
-import { LabView, labScript } from '../controllers/Lab'
+import { LabView, labScript } from '../controllers/Lab';
+import { SearchView, searchScript } from '../controllers/SearchBox';
+
 
 export default router([
     {
@@ -28,5 +30,10 @@ export default router([
         path: '/lab',
         view: LabView,
         script: labScript
+    },
+    {
+        path: '/search',
+        view: SearchView,
+        script: searchScript
     },
 ])

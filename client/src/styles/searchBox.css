@@ -1,0 +1,29 @@
+input {
+  outline: none;
+  border: none;
+}
+
+.search-container {
+  position: relative;
+  margin: 50px auto;
+  width: 500px;
+  height: 35px;
+}
+.search-container .search-inp {
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+  font-size: 14px;
+  text-indent: 5px;
+  color: #424242;
+  border: 1px solid #dad8d8;
+}
+.search-container .search-inp:focus {
+  border: 1px solid blue;
+}
+.search-container .auto-kw {
+  position: absolute;
+  top: 8px;
+  left: 5px;
+  color: #989898;
+}/*# sourceMappingURL=searchBox.css.map */

@@ -1,0 +1,23 @@
+.box {
+  position: absolute;
+  top: 200px;
+  left: 200px;
+  height: 200px;
+  width: 200px;
+  background-color: #000;
+}
+
+.link {
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  background-color: green;
+}
+
+.menu {
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  background-color: #f2f2f2;
+  display: none;
+}/*# sourceMappingURL=mouse.css.map */

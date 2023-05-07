@@ -4,6 +4,7 @@
   line-height: 57px;
   color: #292929;
   border-bottom: 1px solid #f2f2f2;
+  font-family: Neonderthaw;
 }
 
 .main {
@@ -22,9 +23,16 @@
   align-items: center;
 }
 .main-left .article {
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #898787;
   width: 100%;
   height: 276px;
   border-bottom: 1px solid #f2f2f2;
+  background: rgba(225, 224, 224, 0.8);
+  backdrop-filter: saturate(180%) blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 .main-left .article .at {
   height: 10%;

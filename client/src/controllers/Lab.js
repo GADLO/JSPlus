@@ -12,8 +12,8 @@ export async function labScript() {
         name: '鼠标事件',
         url: 'mouse'
     }, {
-        name: 'new Proj2',
-        url: '/'
+        name: '搜索框',
+        url: '/search'
     }]
     for (let i = 0; i < labProj.length; i++) {
         let curProj = document.createElement('div')
