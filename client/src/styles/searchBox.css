@@ -19,11 +19,18 @@ input {
   border: 1px solid #dad8d8;
 }
 .search-container .search-inp:focus {
-  border: 1px solid blue;
+  box-shadow: 0 0 1px 3px #ade8f4;
 }
 .search-container .auto-kw {
   position: absolute;
   top: 8px;
   left: 5px;
   color: #989898;
+}
+.search-container .show {
+  display: block;
+  color: #989898;
+}
+.search-container .hide {
+  display: none;
 }/*# sourceMappingURL=searchBox.css.map */

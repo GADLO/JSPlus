@@ -23,10 +23,9 @@ export async function searchScript() {
     //     }
     //     console.log(this.value);
     // })
-    window.onload = function () {
-        console.log(123);
-        init();
-    }
+
+
+
 
 
     function init() {
@@ -42,6 +41,32 @@ export async function searchScript() {
 
         // console.log(recomKw);
 
+        addEvent(searchKw, 'focus', function () {
+            clearInterval(t)
+            autoKw.style.color = '#ccc'
+            autoKwShow(this.value)
+        })
+
+
+        addEvent(searchKw, 'blur', function () {
+            autoKw.style.color = '#989898';
+            autoKwShow(this.value)
+            t = setInterval(autoKwChange, 3000);
+
+        })
+
+        addEvent(searchKw, 'input', function () {
+            clearInterval(t)
+            autoKw.style.color = '#ccc'
+            autoKwShow(this.value)
+        })
+
+        addEvent(searchKw, 'propertychange', function () {
+            clearInterval(t)
+            autoKw.style.color = '#ccc'
+            autoKwShow(this.value)
+        })
+
         function setAutoKws() {
             autoKwChange();
             t = setInterval(autoKwChange, 3000);
@@ -54,14 +79,21 @@ export async function searchScript() {
             kwOrder >= len - 1 ? kwOrder = 0 : kwOrder++;
         }
 
+
+        function autoKwShow(val) {
+            if (val <= 0) {
+                autoKw.className = 'auto-kw show';
+            } else {
+                autoKw.className = 'auto-kw hide';
+            }
+        }
+
         return function () {
             setAutoKws();
         }
     })();
 
-
-
-
+    init();
 }
 
 /** 
