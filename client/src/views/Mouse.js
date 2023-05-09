@@ -3,11 +3,18 @@ import mouse from '../styles/mouse.css'
 
 export default function Mouse() {
     return (`
-    <a href="javascript:;" class="link">link</a>
-    <div class='box'><div>
-    <div class="menu"></div>
+   
+       <a href="javascript:;" class="link">link</a>
+       <div class="menu"></div>
+       <div class='box'><div>
+  
     `)
 }
+
+
+/*
+   
+*/
 
 //href="javascript:;"这个是为了防止a标签的href生效
 

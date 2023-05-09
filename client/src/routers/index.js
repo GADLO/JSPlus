@@ -6,6 +6,8 @@ import {
     detailScript
 } from '../controllers/Todo'
 import { MouseView, mouseScript } from '../controllers/Mouse';
+import { MouseOverView, mouseOverScript } from '../controllers/MouseOver';
+
 import { LabView, labScript } from '../controllers/Lab';
 import { SearchView, searchScript } from '../controllers/SearchBox';
 
@@ -35,5 +37,10 @@ export default router([
         path: '/search',
         view: SearchView,
         script: searchScript
+    },
+    {
+        path: '/mouseover',
+        view: MouseOverView,
+        script: mouseOverScript
     },
 ])

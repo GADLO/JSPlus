@@ -13,7 +13,10 @@ export async function labScript() {
         url: 'mouse'
     }, {
         name: '搜索框',
-        url: '/search'
+        url: 'search'
+    }, {
+        name: 'MouseOver Card',
+        url: 'mouseover'
     }]
     for (let i = 0; i < labProj.length; i++) {
         let curProj = document.createElement('div')
