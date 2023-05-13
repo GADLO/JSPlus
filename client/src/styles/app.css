@@ -5,5 +5,12 @@
   border-radius: 10px;
   box-shadow: 0 0 0 5px #f2f2f2;
   max-width: 80%;
+  min-width: 10%;
   margin: 20px auto;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=app.css.map */

@@ -4,6 +4,8 @@ import mouse from '../styles/mouse.css'
 export default function MouseOver() {
     return (`
     <p class="explain">DOM事件流：事件捕获阶段不执行事件，目标阶段开始执行，一直沿着冒泡阶段执行向上</p>
+    <p class="explain">mousemove解决鼠标解决鼠标滑出滑入和事件代理产生矛盾的问题</p>
+
     <div class="wrap">
         <ul class="list">
             <li class="list-item active">

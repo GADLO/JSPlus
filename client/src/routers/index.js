@@ -7,9 +7,9 @@ import {
 } from '../controllers/Todo'
 import { MouseView, mouseScript } from '../controllers/Mouse';
 import { MouseOverView, mouseOverScript } from '../controllers/MouseOver';
-
 import { LabView, labScript } from '../controllers/Lab';
 import { SearchView, searchScript } from '../controllers/SearchBox';
+import { ForcastMouseView, forcastMouseScript } from '../controllers/ForcastMouse';
 
 
 export default router([
@@ -42,5 +42,10 @@ export default router([
         path: '/mouseover',
         view: MouseOverView,
         script: mouseOverScript
+    },
+    {
+        path: '/forcastmouse',
+        view: ForcastMouseView,
+        script: forcastMouseScript
     },
 ])
