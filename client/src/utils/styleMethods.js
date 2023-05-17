@@ -1,8 +1,8 @@
 //获取样式属性兼容性写法
-function getStyles(elem, prop) {
+export function getStyles(elem, prop) {
     if (window.getComputedStyle) {
         if (prop) {
-            return parseInt(window.getComputedStyle(elem, null));
+            return parseInt(window.getComputedStyle(elem, null).getPropertyValue(prop));
         } else {
             return window.getComputedStyle(elem, null);
         }

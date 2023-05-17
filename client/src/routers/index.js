@@ -10,7 +10,7 @@ import { MouseOverView, mouseOverScript } from '../controllers/MouseOver';
 import { LabView, labScript } from '../controllers/Lab';
 import { SearchView, searchScript } from '../controllers/SearchBox';
 import { ForcastMouseView, forcastMouseScript } from '../controllers/ForcastMouse';
-
+import { MagnifierView, magnifierScript } from '../controllers/Magnifier';
 
 export default router([
     {
@@ -47,5 +47,11 @@ export default router([
         path: '/forcastmouse',
         view: ForcastMouseView,
         script: forcastMouseScript
+    },
+
+    {
+        path: '/mag',
+        view: MagnifierView,
+        script: magnifierScript
     },
 ])

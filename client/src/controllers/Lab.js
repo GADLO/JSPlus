@@ -27,7 +27,7 @@ export async function labScript() {
         },
         {
             name: '放大镜',
-            url: 'forcastmouse'
+            url: 'mag'
         }
     ]
     for (let i = 0; i < labProj.length; i++) {
