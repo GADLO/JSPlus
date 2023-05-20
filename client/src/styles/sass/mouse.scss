@@ -1,0 +1,197 @@
+.box {
+    position: absolute;
+    left: 200px;
+    height: 200px;
+    width: 200px;
+    background-color: orange;
+}
+
+.link {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    background-color: green;
+}
+
+.menu {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    background-color: #f2f2f2;
+    display: none;
+}
+
+
+.wrap {
+    width: 1300px;
+    height: 200px;
+    margin: 300px 100px;
+    display: block;
+
+    .list {
+        height: 100%;
+
+
+
+        .list-item {
+            position: relative;
+            float: left;
+            width: 210px;
+            margin-right: 20px;
+            transition: .5s ease-in-out;
+
+            &:hover {
+                box-shadow: 0 0 10px 3px #ccc;
+                border-radius: 20px;
+
+            }
+
+            // margin: 5px;
+
+            .card {
+                height: 100%;
+                padding: 10px;
+                border: 1px solid #f2f2f2;
+                border-radius: 20px;
+
+                .title {
+                    width: 170px;
+                    height: 80px;
+
+                    a {
+                        color: #424242;
+                        font-size: 14px;
+
+                        &:hover {
+                            color: red;
+                        }
+                    }
+
+                }
+
+                .price {
+                    width: 170px;
+                    height: 50%;
+                    line-height: 90px;
+                    font-size: 20px;
+                    color: red;
+                }
+
+                .img {
+                    position: absolute;
+                    width: 70px;
+                    height: 70px;
+                    right: 15px;
+                    bottom: 20px;
+                    transition: .5s ease-in-out;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+
+        }
+
+        .active {
+            width: 360px;
+
+            .card {
+                .img {
+                    position: absolute;
+                    width: 150px;
+                    height: 150px;
+                    right: 15px;
+                    transition: .5s ease-in-out;
+
+                }
+            }
+
+        }
+    }
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+div,
+li {
+    box-sizing: border-box;
+}
+
+// 鼠标预测样式
+
+.menu-wrap {
+    position: relative;
+    margin: 50px;
+    margin-top: 100px;
+    width: 200px;
+    height: 440px;
+    background-color: #424242;
+
+    .menu-main {
+        height: 100%;
+
+        .main-item {
+            height: 44px;
+
+            a {
+                display: block;
+                height: 100%;
+                text-align: center;
+                line-height: 44px;
+                color: #f2f2f2;
+
+            }
+        }
+
+        .active {
+            a {
+                color: orange;
+                background-color: #666;
+            }
+
+        }
+    }
+
+    .sub {
+        position: absolute;
+        top: 0;
+        left: 200px;
+        width: 440px;
+        height: 440px;
+        background-color: #eee;
+
+        .sub-list {
+            position: relative;
+
+            .sub-item {
+                display: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                line-height: 440px;
+                font-size: 50px;
+            }
+
+            .active {
+                display: block;
+            }
+        }
+    }
+
+    .hide {
+        display: none;
+    }
+}

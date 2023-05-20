@@ -11,6 +11,8 @@ import { LabView, labScript } from '../controllers/Lab';
 import { SearchView, searchScript } from '../controllers/SearchBox';
 import { ForcastMouseView, forcastMouseScript } from '../controllers/ForcastMouse';
 import { MagnifierView, magnifierScript } from '../controllers/Magnifier';
+import { KeyboardView, keyboardScript } from '../controllers/Keyboard';
+
 
 export default router([
     {
@@ -53,5 +55,12 @@ export default router([
         path: '/mag',
         view: MagnifierView,
         script: magnifierScript
+    },
+
+
+    {
+        path: '/keyboard',
+        view: KeyboardView,
+        script: keyboardScript
     },
 ])

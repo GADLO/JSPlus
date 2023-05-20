@@ -1,0 +1,47 @@
+input {
+    outline: none;
+    border: none;
+}
+
+.search-container {
+    position: relative;
+    margin: 50px auto;
+    width: 500px;
+    height: 35px;
+
+    .search-inp {
+        margin: 0 auto;
+        height: 100%;
+        width: 100%;
+        font-size: 14px;
+        text-indent: 5px;
+        color: #424242;
+        border: 1px solid #dad8d8;
+
+
+        &:focus {
+            box-shadow: 0 0 1px 3px #ade8f4;
+        }
+    }
+
+    .auto-kw {
+        position: absolute;
+        top: 8px;
+        left: 5px;
+        color: #989898;
+    }
+
+
+    .show {
+        display: block;
+        color: #989898;
+    }
+
+    .hide {
+        display: none;
+        // color: #ccc;
+    }
+
+    .has-value {}
+
+}

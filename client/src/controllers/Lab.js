@@ -28,6 +28,10 @@ export async function labScript() {
         {
             name: '放大镜',
             url: 'mag'
+        },
+        {
+            name: '键盘事件',
+            url: 'keyboard'
         }
     ]
     for (let i = 0; i < labProj.length; i++) {

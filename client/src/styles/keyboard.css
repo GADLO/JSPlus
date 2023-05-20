@@ -1,0 +1,27 @@
+.key-box {
+  background-color: green;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+}
+
+.snake-wrap {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  margin: 50px auto;
+  background-color: #000;
+}
+
+.round {
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: green;
+}
+
+.head {
+  background-color: orange;
+}/*# sourceMappingURL=keyboard.css.map */
