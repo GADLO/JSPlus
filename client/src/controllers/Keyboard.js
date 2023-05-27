@@ -36,7 +36,7 @@ export async function keyboardScript() {
                 bTop = getStyles(box, 'top');
 
             console.log(code);
-            //keyCode37为左方向键，38右方向键，39上方向键，40上方向键
+            //keyCode37为左方向键，38上方向键，39右方向键，40上方向键
             switch (code) {
                 case 37:
                     box.style.left = bLeft - 5 + 'px';
@@ -65,7 +65,10 @@ export async function keyboardScript() {
     }
 
     var initGame = (function () {
-        var snakeWrap = document.getElementsByClassName('snake-wrap')[0];
+        var snakeWrap = document.getElementsByClassName('snake-wrap')[0],
+            snakeWrapW = getStyles(snakeWrap, 'width'),
+            snakeWrapH = getStyles(snakeWrap, 'height'),
+            t;
         var Snake = function () {
 
             // 存储坐标对象
@@ -79,47 +82,31 @@ export async function keyboardScript() {
                 { x: 0, y: 120 },
                 { x: 0, y: 140 },
             ];
+
+            this.dir = 'DOWN'
         }
 
         Snake.prototype = {
             //统一管理prototype里的方法
             init: function () {
-                this.initSnake()
-                this.bindEvent()
+                this.initSnake();
+                this.createFood();
+                this.bindEvent();
+                this.run()
             },
             //统一管理绑定事件处理函数
             bindEvent: function () {
                 var _self = this;
                 addEvent(document, 'keydown', function (e) {
-                    var e = e || window.event,
-                        code = e.keyCode;
+                    var e = e || window.event;
 
 
+                    _self.changeDir(e);
 
-                    console.log(code);
-                    //keyCode37为左方向键，38右方向键，39上方向键，40上方向键
-                    switch (code) {
-                        case 37:
-                            _self.move('l')
-                            break;
-                        case 39:
-                            _self.move('r')
 
-                            break;
-                        case 38:
-                            _self.move('u')
-
-                            break;
-                        case 40:
-                            _self.move('d')
-
-                            break;
-                        default:
-                            break;
-                    }
                 })
             },
-
+            //初始化贪吃蛇
             initSnake: function () {
                 var arr = this.bodyArr,
                     len = arr.length,
@@ -145,52 +132,189 @@ export async function keyboardScript() {
 
             },
 
+            run: function () {
+                var _self = this;
+                t = setInterval(function () {
+                    _self.move()
+                }, 300)
+            },
+
+            //控制snake移动方向
             move: function (direction) {
                 var arr = this.bodyArr,
-                    len = arr.length,
-                    head = arr[len - 1];
-
-
+                    len = arr.length;
 
                 for (var i = 0; i < len; i++) {
                     if (i === len - 1) {
-                        switch (direction) {
-                            case 'l':
-                                head.x -= 20
-                                break;
-                            case 'u':
-                                head.y -= 20
-
-                                break;
-                            case 'r':
-                                head.x += 20
-
-                                break;
-                            case 'd':
-                                head.y += 20
-
-                                break;
-                            default:
-                                break;
-                        }
-
+                        this.setHeadXY(arr)
                     } else {
                         //让上后面素顺位继承前面元素的坐标
                         arr[i].x = arr[i + 1].x;
                         arr[i].y = arr[i + 1].y;
                     }
                 }
-
+                this.eatFood(arr);
                 this.removeSnake();
-                this.initSnake()
+                this.initSnake();
+                this.headInBody(arr);
             },
 
+            //设置前进方向
+            setHeadXY: function (arr) {
+                var head = arr[arr.length - 1];
+
+                switch (this.dir) {
+                    case 'LEFT':
+                        head.x <= 0 ? (head.x = snakeWrapW - 20) : (head.x -= 20);
+                        break;
+                    case 'RIGHT':
+                        head.x >= snakeWrapW ? (head.x = 0) : (head.x += 20);
+                        break;
+                    case 'UP':
+                        head.y <= 0 ? (head.y = snakeWrapH - 20) : (head.y -= 20);
+                        break;
+                    case 'DOWN':
+                        head.y >= snakeWrapH ? (head.y = 0) : (head.y += 20);
+                        break;
+                    default:
+                        break;
+                }
+            },
+
+            //判断head的坐标是否跟body有重合
+            headInBody: function (arr) {
+                var headX = arr[arr.length - 1].x,
+                    headY = arr[arr.length - 1].y,
+                    item;
+
+                for (var i = 0; i < arr.length - 2; i++) {
+                    item = arr[i];
+                    if (headX === item.x && headY === item.y) {
+                        var _self = this;
+                        setTimeout(() => {
+                            alert('游戏结束');
+                            clearInterval(t);
+                            _self.removeSnake()
+                            _self.removeFood()
+                        }, 100);
+                    }
+
+                }
+            },
             removeSnake: function () {
                 var bodys = document.getElementsByClassName('round');
 
                 while (bodys.length > 0) {
                     bodys[0].remove()
                 }
+            },
+
+            //触发改变贪吃蛇前进方向函数
+            changeDir: function (e) {
+                var e = e || window.e,
+                    code = e.keyCode;
+
+                this.setDir(code)
+            },
+
+            //通过键盘方向键改变贪吃蛇前进方向
+            setDir: function (code) {
+                //keyCode37为左方向键，38上方向键，39右方向键，40上方向键
+                switch (code) {
+                    case 37:
+                        if (this.dir !== 'RIGHT' && this.dir !== 'LEFT') {
+                            this.dir = 'LEFT'
+                        }
+                        break;
+                    case 39:
+                        if (this.dir !== 'RIGHT' && this.dir !== 'LEFT') {
+                            this.dir = 'RIGHT'
+                        }
+
+                        break;
+                    case 38:
+
+                        if (this.dir !== 'UP' && this.dir !== 'DOWN') {
+                            this.dir = 'UP'
+                        }
+                        break;
+                    case 40:
+                        if (this.dir !== 'UP' && this.dir !== 'DOWN') {
+                            this.dir = 'DOWN'
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            },
+
+            //创建贪吃蛇食物函数
+            createFood: function () {
+                var food = document.createElement('i');
+
+                food.className = 'food';
+                food.style.left = this.randomFoodPos(snakeWrapW) * 20 + 'px';
+                food.style.top = this.randomFoodPos(snakeWrapH) * 20 + 'px';
+                snakeWrap.appendChild(food);
+            },
+
+            //随机生成食物位置函数
+            randomFoodPos: function (wOrH) {
+                return Math.floor(Math.random() * (wOrH / 20))
+            },
+
+            eatFood: function (arr) {
+                //获取容器空间当中的food元素
+                var food = document.getElementsByClassName('food')[0],
+                    //获取food相对容器的left和top值
+                    foodX = getStyles(food, 'left'),
+                    foodY = getStyles(food, 'top'),
+                    //获取当前snake头部相对容器的left和top值
+                    headX = arr[arr.length - 1].x,
+                    headY = arr[arr.length - 1].y,
+                    x,
+                    y;
+
+                //判断food的位置和snake头部位置是否重合
+                if (headX === foodX && headY === foodY) {
+
+                    //若重合，移除当前food并创建新的food
+                    this.removeFood();
+                    this.createFood();
+
+                    //在snake的尾部添加一个元素
+                    if (arr[0].x === arr[1].x) {
+                        //判断尾部方向，这里为纵向，即x位置相同
+                        x = arr[0].x;
+
+                        if (arr[0].y < arr[1].y) {
+                            //纵向，运动方向向下
+                            y = arr[0].y - 20;
+                        } else if (arr[0].y < arr[1].y) {
+                            //纵向，运动方向向上
+                            y = arr[0].y + 20;
+                        }
+                    } else if (arr[0].y === arr[1].y) {
+                        //判断尾部方向，这里为横向，即y位置相同
+                        y = arr[0].y;
+
+                        if (arr[0].x < arr[1].x) {
+                            //横向，运动方向向右
+                            x = arr[0].x - 20;
+                        } else if (arr[0].x < arr[1].x) {
+                            //横向，运动方向向左
+                            x = arr[0].x + 20;
+                        }
+                    }
+
+                    arr.unshift({ x, y });
+                }
+            },
+            //找到当前food并移除他
+            removeFood: function () {
+                var food = document.getElementsByClassName('food')[0];
+
+                food.remove()
             }
         }
 

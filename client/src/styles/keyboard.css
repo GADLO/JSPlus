@@ -3,6 +3,7 @@
   width: 100px;
   height: 100px;
   position: absolute;
+  transition: 0.2s ease-in-out;
 }
 
 .snake-wrap {
@@ -11,6 +12,7 @@
   height: 600px;
   margin: 50px auto;
   background-color: #000;
+  overflow: hidden;
 }
 
 .round {
@@ -20,8 +22,21 @@
   height: 20px;
   border-radius: 50%;
   background-color: green;
+  transition: 0.3s ease-in-out;
+  text-align: center;
 }
 
 .head {
   background-color: orange;
+  transition: 0.3s ease-in-out;
+}
+
+.food {
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgb(246, 151, 19);
+  transition: 0.3s ease-in-out;
 }/*# sourceMappingURL=keyboard.css.map */
