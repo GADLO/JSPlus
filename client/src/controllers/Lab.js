@@ -32,6 +32,14 @@ export async function labScript() {
         {
             name: '键盘事件',
             url: 'keyboard'
+        },
+        {
+            name: 'ICON',
+            url: 'icon'
+        },
+        {
+            name: 'CSSWORLD',
+            url: 'cssworld'
         }
     ]
     for (let i = 0; i < labProj.length; i++) {

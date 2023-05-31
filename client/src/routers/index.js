@@ -12,6 +12,10 @@ import { SearchView, searchScript } from '../controllers/SearchBox';
 import { ForcastMouseView, forcastMouseScript } from '../controllers/ForcastMouse';
 import { MagnifierView, magnifierScript } from '../controllers/Magnifier';
 import { KeyboardView, keyboardScript } from '../controllers/Keyboard';
+import { IconView, IconScript } from '../controllers/Icon';
+import { CssWorldView, CssWorldScript } from '../controllers/CssWorld';
+
+
 
 
 export default router([
@@ -50,7 +54,6 @@ export default router([
         view: ForcastMouseView,
         script: forcastMouseScript
     },
-
     {
         path: '/mag',
         view: MagnifierView,
@@ -62,5 +65,15 @@ export default router([
         path: '/keyboard',
         view: KeyboardView,
         script: keyboardScript
+    },
+    {
+        path: '/icon',
+        view: IconView,
+        script: IconScript
+    },
+    {
+        path: '/cssworld',
+        view: CssWorldView,
+        script: CssWorldScript
     },
 ])
