@@ -8,6 +8,9 @@
   min-width: 10%;
   margin: 20px auto;
 }
+.explain:hover {
+  cursor: pointer;
+}
 
 .center {
   display: flex;

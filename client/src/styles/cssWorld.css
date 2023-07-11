@@ -1,1 +1,18 @@
-/*# sourceMappingURL=cssWorld.css.map */
+.css-world-wrap .block {
+  display: block;
+  border: 1px solid #ccc;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  margin-bottom: 10px;
+}
+.css-world-wrap .inline-block {
+  display: inline-block;
+  border: 1px solid #ccc;
+  height: 50px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.css-world-wrap .inline-table {
+  display: inline-table;
+}/*# sourceMappingURL=cssWorld.css.map */

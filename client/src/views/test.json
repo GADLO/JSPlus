@@ -1,0 +1,92 @@
+{
+    "id": "3638a6b4-c5a8-487b-be49-b1236b2d08dc",
+    "code": 1,
+    "msg": "成功",
+    "data": {
+        "devices": [
+            {
+                "createTime": "20211215T080811Z",
+                "deviceId": "D269134845w3o2O",
+                "deviceInfo": {
+                    "description": "created by southbound API",
+                    "deviceType": "EnvMonitor",
+                    "manufacturerId": "DGRI",
+                    "manufacturerName": "DingXin",
+                    "model": "Smoke",
+                    "mute": "FALSE",
+                    "name": "烟雾检测传感器（配电房）",
+                    "nodeId": "50322109000687_Smoke",
+                    "protocolType": "MQTT",
+                    "status": "OFFLINE"
+                },
+                "deviceOid": 134845,
+                "gatewayId": "50322109000687",
+                "nodeType": "ENDPOINT",
+                "tags": []
+            },
+            {
+                "createTime": "20211215T080811Z",
+                "deviceId": "D283134843j6zD9",
+                "deviceInfo": {
+                    "description": "created by southbound API",
+                    "deviceType": "EnvMonitor",
+                    "manufacturerId": "DGRI",
+                    "manufacturerName": "DingXin",
+                    "model": "Waterlogging",
+                    "mute": "FALSE",
+                    "name": "水浸传感器（配电房）",
+                    "nodeId": "50322109000687_Waterlogging",
+                    "protocolType": "MQTT",
+                    "status": "OFFLINE"
+                },
+                "deviceOid": 134843,
+                "gatewayId": "50322109000687",
+                "nodeType": "ENDPOINT",
+                "tags": []
+            },
+            {
+                "createTime": "20211215T080810Z",
+                "deviceId": "D279134841TdzRN",
+                "deviceInfo": {
+                    "description": "created by southbound API",
+                    "deviceType": "EnvMonitor",
+                    "manufacturerId": "DGRI",
+                    "manufacturerName": "DingXin",
+                    "model": "Door",
+                    "mute": "FALSE",
+                    "name": "门状态（配电房）",
+                    "nodeId": "50322109000687_Door",
+                    "protocolType": "MQTT",
+                    "status": "OFFLINE"
+                },
+                "deviceOid": 134841,
+                "gatewayId": "50322109000687",
+                "nodeType": "ENDPOINT",
+                "tags": []
+            },
+            {
+                "createTime": "20211215T080810Z",
+                "deviceId": "D289134839iB8BT",
+                "deviceInfo": {
+                    "description": "created by southbound API",
+                    "deviceType": "EnvMonitor",
+                    "manufacturerId": "DGRI",
+                    "manufacturerName": "DingXin",
+                    "model": "HTSensor",
+                    "mute": "FALSE",
+                    "name": "温湿度（配电房）",
+                    "nodeId": "50322109000687_HTSensor",
+                    "protocolType": "MQTT",
+                    "status": "OFFLINE"
+                },
+                "deviceOid": 134839,
+                "gatewayId": "50322109000687",
+                "nodeType": "ENDPOINT",
+                "tags": []
+            }
+        ],
+        "pageNo": 1,
+        "pageSize": 200,
+        "totalCount": 4
+    }
+}

@@ -40,6 +40,14 @@ export async function labScript() {
         {
             name: 'CSSWORLD',
             url: 'cssworld'
+        },
+        {
+            name: 'HTTP',
+            url: 'http'
+        },
+        {
+            name: 'AJAX',
+            url: 'ajax'
         }
     ]
     for (let i = 0; i < labProj.length; i++) {

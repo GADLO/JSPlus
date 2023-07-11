@@ -14,6 +14,8 @@ import { MagnifierView, magnifierScript } from '../controllers/Magnifier';
 import { KeyboardView, keyboardScript } from '../controllers/Keyboard';
 import { IconView, IconScript } from '../controllers/Icon';
 import { CssWorldView, CssWorldScript } from '../controllers/CssWorld';
+import { HTTPView, HTTPScript } from '../controllers/HTTP';
+import { AJAXView, AJAXScript } from '../controllers/AJAX';
 
 
 
@@ -75,5 +77,15 @@ export default router([
         path: '/cssworld',
         view: CssWorldView,
         script: CssWorldScript
+    },
+    {
+        path: '/http',
+        view: HTTPView,
+        script: HTTPScript
+    },
+    {
+        path: '/ajax',
+        view: AJAXView,
+        script: AJAXScript
     },
 ])

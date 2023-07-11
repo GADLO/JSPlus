@@ -1,0 +1,8 @@
+.http-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  margin: 10px auto;
+  border: 2px solid #f2f2f2;
+}/*# sourceMappingURL=http.css.map */
