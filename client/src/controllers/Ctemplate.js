@@ -1,9 +1,9 @@
 import template from '../views'
 
 export async function View() {
-    return Mouse();
+    return template();
 }
 
-export async function Script() {
+export async function templateScript() {
 
 }
