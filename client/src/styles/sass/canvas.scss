@@ -1,0 +1,17 @@
+.tool-bar {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+
+    // .tool-item {
+    //     display: flex;
+    //     align-items: center;
+    // }
+
+    .eraser-circle {
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        position: fixed;
+        box-sizing: border-box;
+    }
+}

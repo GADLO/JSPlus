@@ -16,6 +16,9 @@ import { IconView, IconScript } from '../controllers/Icon';
 import { CssWorldView, CssWorldScript } from '../controllers/CssWorld';
 import { HTTPView, HTTPScript } from '../controllers/HTTP';
 import { AJAXView, AJAXScript } from '../controllers/AJAX';
+import { IframeView, IframeScript } from '../controllers/Iframe';
+import { CanvasView, CanvasScript } from '../controllers/Canvas';
+
 
 
 
@@ -88,4 +91,15 @@ export default router([
         view: AJAXView,
         script: AJAXScript
     },
+    {
+        path: '/iframe',
+        view: IframeView,
+        script: IframeScript
+    },
+    {
+        path: '/canvas',
+        view: CanvasView,
+        script: CanvasScript
+    },
+
 ])

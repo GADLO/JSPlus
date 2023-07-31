@@ -38,12 +38,48 @@ var $ = (function () {
             //	设置超时时间
             timeout = opt.timeout || 5000,
 
+            //设置jsonp跨域
+            jsonp = opt.jsonp || 'cb',
+
+            //设置jsonp跨域返回后执行的函数名
+            jsonpCallback = opt.jsonpCallback || 'jQuery' + randomNum() + '_' + new Date().getTime(),
+
             //设置定时器
             t = null;
 
         //若未传入url参数
         if (!url) {
             throw new Error('未传入URL参数');
+        }
+
+        //判断jsonp跨域请求方式是否为GET
+        if (dataType.toUpperCase() === 'JSONP' && method !== 'GET') {
+            throw new Error('如果dataType为JSONP,请您将type设置成GET');
+        }
+
+
+        if (dataType.toUpperCase() === 'JSONP') {
+            var oScript = document.createElement('script');
+            // oScript.src = url.indexOf('?') === -1 ? url + '?' + jsonp + '=' + jsonpCallback : url + '&' + jsonp + '=' + jsonpCallback;
+            oScript.src = url
+            document.body.appendChild(oScript);
+            document.body.removeChild(oScript);
+
+            window[jsonpCallback] = function (data) {
+                success(data)
+            }
+
+            //若为跨域请求，执行完毕跳出ajax
+            return
+        }
+
+        //生成20位的随机字符串
+        function randomNum() {
+            var str = '';
+            for (var i = 0; i < 20; i++) {
+                str += Math.floor(Math.random() * 10);
+            }
+            return str;
         }
 
         //AJAX绑定事件监听处理函数
@@ -115,7 +151,7 @@ var $ = (function () {
     }
 
     return {
-        Ajax: function (opt) {
+        ajax: function (opt) {
             //处理传入的参数问题，抽离函数，能够让所有方法能够在Ajax
             _doAjax(opt);
         },

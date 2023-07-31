@@ -9,48 +9,21 @@
 </head>
 
 <body>
-    <iframe src="https:www.baidu.com" id="myIframe"></iframe>
-
-    <button id="fetch">获取</button>
-
-    <script>
-
-        let btn = document.getElementById('fetch')
-
-
-        var xhr
-
-        if (window.XMLHttpRequest) {
-            xhr = new XMLHttpRequest();
-
-        } else {
-            xhr = new ActiveXObject('Microsoft.XMLHTTP')
-        }
-
-        addEvent(btn, 'click', function () {
-            xhr.open('GET', 'http://localhost/dashboard/', true)
-            xhr.send()
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    console.log(xhr.reponseText);
-                }
-            }
-            console.log(xhr);
-
-        })
-
-        function addEvent(elem, event, fn) {
-            if (elem.addEventListener) {
-                elem.addEventListener(event, fn, false);
-            } else if (elem.attachEvent) {
-                elem.attachEvent("on" + event, function () {
-                    FileSystemHandle.call(el);
-                });
-            } else {
-                elem["on" + event] = fn;
-            }
-        }
-    </script>
+    <div class="f-wrap">
+        <aside class="aside-wrap">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="https://www.jd.com" target="navIframe" class="nav-lk"></a></li>
+                <li class="nav-item"><a href="https://www.taobao.com" target="navIframe" class="nav-lk"></a></li>
+                <li class="nav-item"><a href="https://www.tmall.com" target="navIframe" class="nav-lk"></a></li>
+                <li class="nav-item"><a href="https://m.pinduoduo.com" target="navIframe" class="nav-lk"></a></li>
+                <li class="nav-item"><a href="https://www.jd.com" target="navIframe" class="nav-lk"></a></li>
+                <li class="nav-item"><a href="https://www.jd.com" target="navIframe" class="nav-lk"></a></li>
+            </ul>
+            <section class="frame-wrap">
+                <iframe src="https://www.tmall.com" name="navIframe"></iframe>
+            </section>
+        </aside>
+    </div>
 </body>
 
 </html>

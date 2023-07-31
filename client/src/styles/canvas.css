@@ -1,0 +1,11 @@
+.tool-bar {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+.tool-bar .eraser-circle {
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  position: fixed;
+  box-sizing: border-box;
+}/*# sourceMappingURL=canvas.css.map */
