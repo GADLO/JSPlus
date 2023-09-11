@@ -83,6 +83,12 @@ export async function labScript() {
             dsc: 'description',
             imgUrl: './'
         },
+        {
+            name: 'JianYi',
+            url: 'jianyi',
+            dsc: 'description',
+            imgUrl: './'
+        },
     ]
     for (let i = 0; i < labProj.length; i++) {
         let curProj = document.createElement('div'),

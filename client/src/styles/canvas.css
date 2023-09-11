@@ -8,4 +8,10 @@
   border-radius: 50%;
   position: fixed;
   box-sizing: border-box;
+}
+
+.clearBoard {
+  position: fixed;
+  left: 0;
+  top: 0;
 }/*# sourceMappingURL=canvas.css.map */

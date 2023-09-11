@@ -1,7 +1,22 @@
-const HTMLTemplate = {};
 
-HTMLTemplate.h1 = function (text, className) {
-    return `<h1 class=${className}>${text}</h1>`
+
+export const h1 = function (opt) {
+    return `<h1 class=${opt?.className}>${opt?.text}</h1>`
 }
 
-export default HTMLTemplate
+export const div = function (opt) {
+    return `<div id=${opt?.id} class=${opt?.className}>${opt?.text}</div>`
+}
+
+export const p = function (opt) {
+    return `<p id=${opt?.id} class=${opt?.className}>${opt?.text}</p>`
+}
+
+export const canv = function (opt) {
+    return `<canvas id=${opt?.id} class=${opt?.className}>${opt?.text}</canvas>`
+}
+
+
+export const btn = function (opt) {
+    return `<button id=${opt?.id} class=${opt?.className}>${opt?.text}</button>`
+}

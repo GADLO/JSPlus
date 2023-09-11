@@ -18,6 +18,9 @@ import { HTTPView, HTTPScript } from '../controllers/HTTP';
 import { AJAXView, AJAXScript } from '../controllers/AJAX';
 import { IframeView, IframeScript } from '../controllers/Iframe';
 import { CanvasView, CanvasScript } from '../controllers/Canvas';
+import { CanvasBasicView, CanvasBasicScript } from '../controllers/CanvasBasic';
+import { JianYiView, JianYiScript } from '../controllers/JianYi'
+
 
 
 
@@ -100,6 +103,17 @@ export default router([
         path: '/canvas',
         view: CanvasView,
         script: CanvasScript
+    },
+    {
+        path: '/canvasbasic',
+        view: CanvasBasicView,
+        script: CanvasBasicScript
+    },
+
+    {
+        path: '/jianyi',
+        view: JianYiView,
+        script: JianYiScript
     },
 
 ])

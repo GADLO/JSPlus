@@ -94,6 +94,8 @@ export async function CanvasScript() {
 
 
     }
+
+    
     function initStyle() {
         ctx.setColor(CANVAS_VALUES.DEFAULT_COLOR);
         ctx.setLineStyle(CANVAS_VALUES.DEFAULT_LINESTYLE);
@@ -193,8 +195,6 @@ export async function CanvasScript() {
         ctx.setLineWidth(this.value)
 
     }
-
-
 
 
 
